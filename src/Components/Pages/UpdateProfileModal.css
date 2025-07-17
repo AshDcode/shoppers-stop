@@ -1,0 +1,137 @@
+/* Backdrop fade in */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  /* darker semi-transparent */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Modal scaling animation */
+.update-profile-modal {
+  background: var(--modal-bg, #222); /* fallback for dark */
+  color: var(--modal-text, #fff);
+  border-radius: 10px;
+  padding: 30px;
+  width: 90%;
+  max-width: 400px;
+  transform: scale(1);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 1;
+}
+
+.update-profile-modal.hidden {
+  transform: scale(0.9);
+  opacity: 0;
+}
+/* Opening */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Closing */
+.fade-out {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+
+/* Animations */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scaleIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Close button */
+.update-profile-modal .close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Form */
+.update-profile-modal form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.update-profile-modal form label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 500;
+}
+
+/* Inputs */
+.update-profile-modal input[type="text"],
+.update-profile-modal input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background: #333;
+  color: #fff;
+}
+
+/* Buttons */
+.update-profile-modal button[type="submit"] {
+  padding: 0.75rem;
+  background: var(--primary-color, #007bff);
+  border: none;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
+
+.update-profile-modal button[type="submit"]:hover {
+  background: var(--primary-hover-color, #0056b3);
+}
+
+/* Profile image */
+.update-profile-modal .profile-preview {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-top: 10px;
+  object-fit: cover;
+  border: 2px solid #555;
+}
+/* Mobile */
+@media (max-width: 480px) {
+  .update-profile-modal {
+    padding: 1.2rem;
+    width: 95%;
+  }
+
+  .update-profile-modal h2 {
+    font-size: 1.2rem;
+  }
+
+  .update-profile-modal button[type="submit"] {
+    width: 100%;
+  }
+}

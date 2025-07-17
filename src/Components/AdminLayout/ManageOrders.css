@@ -1,0 +1,69 @@
+.manage-orders {
+  padding: 2rem;
+}
+
+.manage-orders h2 {
+  margin-bottom: 1rem;
+}
+
+.manage-orders table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.manage-orders th,
+.manage-orders td {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.manage-orders tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Status badge styling */
+.status {
+  font-weight: bold;
+  padding: 4px 8px;
+  border-radius: 12px;
+  color: white;
+  text-transform: capitalize;
+}
+
+/* Individual status colors */
+.status.pending {
+  background-color: #f0ad4e;
+  color: darkred
+    /* border: 1px solid #ffcc80; */
+}
+
+.status.processing {
+  background-color: #5bc0de;
+  color: #0056b3;
+  /* border: 1px solid #80b3ff; */
+}
+
+.status.shipped {
+  background-color: #5cb85c;
+  color: darkgreen;
+  /* border: 1px solid #8cd790; */
+}
+
+.status.delivered {
+  background-color: #428bca;
+  color: #2e7d32;
+  /* border: 1px solid #81c784; */
+}
+
+.status.cancelled {
+  background-color: #d9534f;
+  color: darkmagenta;
+  /* border: 1px solid #f19999; */
+}
+
+.status.unknown {
+  background-color: #777;
+}

@@ -1,0 +1,245 @@
+.bag-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.bag-modal-content {
+    background: #ffffff;
+    color: #333;
+    border-radius: 8px;
+    padding: 1.5rem;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    max-height: 80vh;
+}
+
+/* 
+@media (prefers-color-scheme: dark) {
+  .bag-modal-content {
+    background: #222;
+    color: #eee;
+  }
+} */
+/* 
+.bag-modal-content h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #222;
+} */
+
+.bag-title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.bag-empty {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #777;
+    padding: 1.5rem 0;
+}
+
+/* Items List */
+.bag-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+}
+
+.bag-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.bag-item-image img {
+    width: 60px;
+    height: 60px;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.bag-item-details {
+    flex: 1;
+}
+
+.bag-item-title {
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+}
+
+.bag-item-price {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.bag-item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.qty-btn {
+    background: #ddd;
+    border: none;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.qty-btn:hover {
+    background: #bbb;
+}
+
+/* Remove Button */
+.remove-btn {
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 0.4rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.remove-btn:hover {
+    background: #c0392b;
+}
+
+.bag-summary {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+}
+
+.bag-summary p {
+    margin: 0.4rem 0;
+    font-size: 1rem;
+}
+
+.bag-total {
+    margin-top: 1rem;
+    font-weight: bold;
+    text-align: right;
+    font-size: 1.1rem;
+}
+
+.bag-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.2rem;
+    gap: 0.5rem;
+}
+
+.bag-summary button,
+.bag-actions button {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    /* margin: 0.3rem; */
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.checkout-btn {
+    background: #007bff;
+    color: #fff;
+    /* border: none; */
+}
+
+.checkout-btn:hover {
+    background: #0056b3;
+}
+
+.close-btn {
+    background: #555;
+    color: #fff;
+}
+
+.close-btn:hover {
+    background: #333;
+}
+
+@media (max-width: 500px) {
+    .bag-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .bag-item-quantity {
+        justify-content: flex-start;
+    }
+
+    .bag-actions {
+        flex-direction: column;
+        /* gap: 0.5rem; */
+    }
+
+    .bag-summary button,
+    .bag-actions button {
+        width: 100%;
+    }
+}
+
+/* Modern scrollbar */
+.bag-modal-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.bag-modal-content::-webkit-scrollbar-thumb {
+    background-color: rgba(150, 150, 150, 0.6);
+    border-radius: 3px;
+}
+
+.bag-modal::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* .bag-summary button {
+    background: #007bff;
+    color: #fff;
+}
+
+.bag-summary button:hover {
+    background: #0056b3;
+}
+
+.bag-item img {
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+.bag-item button {
+    background: #e74c3c;
+    color: #fff;
+} */
+
+/* .bag-item button:hover {
+    background: #c0392b;
+}
+
+.bag-summary strong {
+    font-weight: 600;
+}
+
+.bag-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+} */

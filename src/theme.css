@@ -1,0 +1,19 @@
+/* Light Theme (default) */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #222222;
+  --header-bg: #f9f9f9;
+  --card-bg: #ffffff;
+  --border-color: #ddd;
+  --link-color: #007bff;
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-color: #181818;
+  --text-color: #e0e0e0;
+  --header-bg: #202020;
+  --card-bg: #2a2a2a;
+  --border-color: #333;
+  --link-color: #66b2ff;
+}
