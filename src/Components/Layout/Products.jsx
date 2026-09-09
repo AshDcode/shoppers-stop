@@ -34,7 +34,7 @@ const Products = ({ search }) => {
       setLoading(true);
       try {
         // fetch api
-        const response = await fetch("https://fakestoreapi.in/api/products");
+        const response = await fetch("https://fakestoreapi.com/products");
         const apiData = await response.json();
         console.log(apiData);
         const apiProducts = (apiData.products || []).map((p) => ({
