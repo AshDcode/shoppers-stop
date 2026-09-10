@@ -35,18 +35,27 @@ const Products = ({ search }) => {
       try {
         // fetch api
         const response = await fetch("https://fakestoreapi.com/products");
+
+        if (!response.ok) {
+          throw new Error(`Product API failed: ${response.status}`);
+        }
+
         const apiData = await response.json();
-        console.log(apiData);
-        const apiProducts = (apiData.products || []).map((p) => ({
+        
+        console.log("API products:", apiData);
+
+        const apiProducts = apiData.map((p) => ({
           ...p,
           source: "api"
         }));
 
         // fetch from firestore
         const snapshot = await getDocs(collection(db, "products"));
+
         const fireStoreProducts = snapshot.docs.map(doc => ({
           id: doc.id,
           ...doc.data(),
+          source: "firestore",
         }));
 
         // combine both
@@ -83,9 +92,8 @@ const Products = ({ search }) => {
       sorted.sort((a, b) => a.price - b.price);
     } else if (sortOption === "priceHighLow") {
       sorted.sort((a, b) => b.price - a.price);
-    }
-    else if (sortOption === "ratingHighLow") {
-      sorted.sort((a, b) => (b.rating || 0) - (a.rating || 0));
+    } else if (sortOption === "ratingHighLow") {
+      sorted.sort((a, b) => (b.rating?.rate || 0) - (a.rating?.rate || 0));
     } else if (sortOption === "titleAZ") {
       sorted.sort((a, b) => a.title.localeCompare(b.title));
     } else if (sortOption === "titleZA") {

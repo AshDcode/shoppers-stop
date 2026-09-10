@@ -23,75 +23,80 @@ import OrderConfirmation from './Components/Pages/OrderConfirmation';
 import OrderDetails from './Components/AdminLayout/OrderDetails';
 console.log("Firebase initiated", app)
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <AppLayout />,
-    errorElement: <ErrorPage />,
-    children: [
-      // {
-      //   path: "/",
-      //   element: <Home />
-      // },
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <AppLayout />,
+      errorElement: <ErrorPage />,
+      children: [
+        // {
+        //   path: "/",
+        //   element: <Home />
+        // },
 
-      {
-        path: "bag",
-        element: <BagModal />
-      },
-      {
-        path: "favourites",
-        element: <FavouritePage />
-      },
-      {
-        path: "/product/:id",
-        element: <ProductDetails />
-      },
-      {
-        path: "payment",
-        element: (
-          <ProtectedRoute>
-            <PaymentPage />
-          </ProtectedRoute>
-        ),
-      },
-      {
-        path: "order-confirmation",
-        element: <OrderConfirmation />
-      }
+        {
+          path: "bag",
+          element: <BagModal />
+        },
+        {
+          path: "favourites",
+          element: <FavouritePage />
+        },
+        {
+          path: "/product/:id",
+          element: <ProductDetails />
+        },
+        {
+          path: "payment",
+          element: (
+            <ProtectedRoute>
+              <PaymentPage />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "order-confirmation",
+          element: <OrderConfirmation />
+        }
 
-    ],
-  },
+      ],
+    },
+    {
+      path: "/admin",
+      element: (
+        <AdminRoute>
+          <AdminLayout />
+        </AdminRoute>
+      ),
+      children: [
+        {
+          path: "",
+          element: <AdminDashboard />
+        },
+        {
+          path: "products",
+          element: <ManageProducts />
+        },
+        {
+          path: "orders",
+          element: <ManageOrders />
+        },
+        {
+          path: "users",
+          element: <ManageUsers />
+        },
+        {
+          path: "order/:orderId",
+          element: <OrderDetails />
+        }
+      ],
+    }
+  ],
   {
-    path: "/admin",
-    element: (
-      <AdminRoute>
-        <AdminLayout />
-      </AdminRoute>
-    ),
-    children: [
-      {
-        path: "",
-        element: <AdminDashboard />
-      },
-      {
-        path: "products",
-        element: <ManageProducts />
-      },
-      {
-        path: "orders",
-        element: <ManageOrders />
-      },
-      {
-        path: "users",
-        element: <ManageUsers />
-      },
-      {
-        path: "order/:orderId",
-        element: <OrderDetails />
-      }
-    ],
+    basename: "/shoppers-stop",
   }
-]);
+);
 
 const App = () => {
 

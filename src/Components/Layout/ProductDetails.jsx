@@ -2,7 +2,7 @@ import "./ProductDetails.css";
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import ReviewSection from "./ReviewSection";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { addDoc, collection, getDocs, query, where, doc, getDoc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { useBag } from "../../context/BagContext";
 const ProductDetails = () => {
@@ -15,34 +15,70 @@ const ProductDetails = () => {
     const { addToBag } = useBag();
     const reviewRef = collection(db, 'reviews');
 
-    // const addReview = async (newReview) => {
-    //     try {
-    //         const fullReview = {
-    //             ...newReview,
-    //             productId: product.id
-    //         };
-    //         await addDoc(reviewRef, fullReview);
-    //         setReviews(prev => [fullReview, ...prev]);
-    //     } catch (error) {
-    //         console.error("Error adding review:", error);
-    //     }
-    //     // setReviews(prev => [newReview, ...prev]);
-    // };
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [id]);
 
     useEffect(() => {
         const fetchProduct = async () => {
             try {
-                const response = await fetch(`https://fakestoreapi.in/api/products/${id}`);
-                const data = await response.json();
-                setProduct(data.product);
-                console.log(data);
-                setLoading(false);
+                if (!id) return;
+
+                // API product
+                if (id.startsWith("api-")) {
+                    const productId = id.replace("api-", "");
+
+                    const response = await fetch(
+                        `https://fakestoreapi.com/products/${productId}`
+                    );
+
+                    if (!response.ok) {
+                        throw new Error(
+                            `Product API failed: ${response.status}`
+                        );
+                    }
+
+                    const data = await response.json();
+
+                    setProduct({
+                        ...data,
+                        source: "api",
+                    });
+
+                    return;
+                }
+
+                // Firestore product
+                if (id.startsWith("fs-")) {
+                    const firestoreId = id.replace("fs-", "");
+
+                    const productRef = doc(db, "products", firestoreId);
+                    const productSnapshot = await getDoc(productRef);
+
+                    if (!productSnapshot.exists()) {
+                        throw new Error("Firestore product not found");
+                    }
+
+                    setProduct({
+                        id: productSnapshot.id,
+                        ...productSnapshot.data(),
+                        source: "firestore",
+                    });
+
+                    return;
+                }
+
+                throw new Error("Invalid product ID");
+
             } catch (error) {
-                console.log("products not available", error);
+                console.error("Product details error:", error);
+            } finally {
+                setLoading(false);
             }
         };
+
         fetchProduct();
-    }, [id])
+    }, [id]);
 
     // fetch reviews when product loads
     useEffect(() => {
@@ -96,14 +132,3 @@ const ProductDetails = () => {
 }
 
 export default ProductDetails;
-
-// cart value indicator
-//dark mode
-// payment integration
-// Product availability notification
-// Admin Dashboard to manage users products orders
-// customer support
-// password reset functionality
-// order history
-// coupons and discounts
-// product sorting
