@@ -1,19 +1,58 @@
-/* Light Theme (default) */
+/* ================================
+   Shoppers Stop - Theme Tokens
+   ================================ */
+
 :root {
+  color-scheme: light;
+
   --bg-color: #ffffff;
-  --text-color: #222222;
-  --header-bg: #f9f9f9;
+  --surface-color: #ffffff;
+  --header-bg: #ffffff;
   --card-bg: #ffffff;
-  --border-color: #ddd;
-  --link-color: #007bff;
+
+  --text-color: #1f1f1f;
+  --muted-text-color: #6b6b6b;
+  --link-color: #0d6efd;
+
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --danger-color: #dc3545;
+
+  --border-color: #e2e2e2;
+  --input-bg: #ffffff;
+  --input-border: #cfcfcf;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.10);
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+
+  --transition-fast: 0.2s ease;
+  --transition-theme: 0.3s ease;
 }
 
-/* Dark Theme */
 [data-theme="dark"] {
-  --bg-color: #181818;
-  --text-color: #e0e0e0;
-  --header-bg: #202020;
-  --card-bg: #2a2a2a;
-  --border-color: #333;
+  color-scheme: dark;
+
+  --bg-color: #121212;
+  --surface-color: #1b1b1b;
+  --header-bg: #181818;
+  --card-bg: #1f1f1f;
+
+  --text-color: #f1f1f1;
+  --muted-text-color: #b5b5b5;
   --link-color: #66b2ff;
+
+  --primary-color: #4d9cff;
+  --primary-hover: #76b5ff;
+  --danger-color: #ff6b7a;
+
+  --border-color: #353535;
+  --input-bg: #242424;
+  --input-border: #4a4a4a;
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.28);
+  --shadow-md: 0 6px 18px rgba(0, 0, 0, 0.35);
 }
